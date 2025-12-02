@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories - Authentic Only</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="luxury-colors.css">
+    <style>
+        /* Accessories Page Specific Styles */
+        body {
+            background: linear-gradient(135deg, #0A0E17 0%, #1A1D24 50%, #0A0E17 100%);
+            color: #E5E4E2;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(26, 29, 36, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .accessories-header {
+            background: linear-gradient(135deg, #1A1D24 0%, #0A0E17 100%);
+            padding: 2.5rem 3rem;
+            border-bottom: 2px solid #D4AF37;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .accessories-header .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .accessories-header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #D4AF37;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.15em;
+            line-height: 1.2;
+        }
+
+        .accessories-header .tagline {
+            color: #E5E4E2;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .accessories-nav {
+            background: linear-gradient(135deg, #0A0E17 0%, #1A1D24 100%);
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .accessories-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .accessories-nav a {
+            color: #E5E4E2;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .accessories-nav a:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .accessories-main {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #D4AF37;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.2em;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .construction-message {
+            background: rgba(26, 29, 36, 0.95);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .construction-message h1 {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+        }
+
+        .construction-message p {
+            color: #E5E4E2;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #0A0E17;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .accessories-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .accessories-header .logo {
+                font-size: 2rem;
+            }
+
+            .accessories-nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .accessories-main {
+                padding: 2rem 1rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+                letter-spacing: 0.15em;
+                margin-bottom: 2rem;
+            }
+
+            .construction-message {
+                padding: 2rem 1.5rem;
+            }
+
+            .construction-message h1 {
+                font-size: 2rem;
+            }
+
+            .construction-message p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="accessories-header">
+        <div class="logo-section">
+            <h1 class="logo">Authentic Only</h1>
+        </div>
+    </header>
+
+    <nav class="accessories-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#clothing">Clothing</a></li>
+            <li><a href="menswear.html">Menswear</a></li>
+            <li><a href="#accessories">Accessories</a></li>
+            <li><a href="#new-arrivals">New Arrivals</a></li>
+        </ul>
+    </nav>
+
+    <main class="accessories-main">
+        <div class="construction-message">
+            <h1>Sorry, this page is still under construction</h1>
+            <p>We are working diligently to bring you our exquisite collection of luxury accessories. Please check back soon for updates.</p>
+            <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
+    </main>
+
+    <script src="luxury-interactions.js"></script>
+</body>
+</html>
