@@ -7,7 +7,9 @@ class LuxuryInteractions {
     }
 
     init() {
+        this.setupHamburgerMenu();
         this.setupSideMenu();
+        this.setupDropdownMenus();
         this.setupShoppingCart();
         this.setupProductInteractions();
         this.setupNewsletterValidation();
@@ -16,34 +18,109 @@ class LuxuryInteractions {
         this.loadCartFromStorage();
     }
 
-    // 1. Unique Side Menu Functionality
-    setupSideMenu() {
-        // Create side menu HTML if it doesn't exist
-        if (!document.querySelector('.side-menu')) {
-            const sideMenuHTML = `
-                <div class="side-menu-overlay"></div>
-                <div class="side-menu">
-                    <div class="side-menu-header">
-                        <h3>More Options</h3>
-                        <button class="close-menu">&times;</button>
-                    </div>
-                    <nav class="side-menu-nav">
-                        <a href="#about" class="menu-item">About Us</a>
-                        <a href="#contact" class="menu-item">Contact</a>
-                        <a href="#support" class="menu-item">Support</a>
-                        <a href="#faq" class="menu-item">FAQ</a>
-                        <a href="#careers" class="menu-item">Careers</a>
-                        <a href="#press" class="menu-item">Press</a>
-                    </nav>
-                </div>
-            `;
-            document.body.insertAdjacentHTML('beforeend', sideMenuHTML);
-        }
+    // 1. Hamburger Menu Functionality
+    setupHamburgerMenu() {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const nav = document.querySelector('nav');
+        const navUl = document.querySelector('nav ul');
 
-        // Event listeners
-        const closeBtn = document.querySelector('.close-menu');
-        const overlay = document.querySelector('.side-menu-overlay');
-        const sideMenu = document.querySelector('.side-menu');
+        if (hamburgerBtn && nav && navUl) {
+            hamburgerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                hamburgerBtn.classList.toggle('active');
+                navUl.classList.toggle('mobile-menu-active');
+
+                // Create or toggle mobile overlay
+                let mobileOverlay = document.querySelector('.mobile-menu-overlay');
+                if (!mobileOverlay) {
+                    mobileOverlay = document.createElement('div');
+                    mobileOverlay.className = 'mobile-menu-overlay';
+                    mobileOverlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(10, 14, 23, 0.8);
+                        backdrop-filter: blur(5px);
+                        z-index: 998;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.3s ease;
+                    `;
+                    document.body.appendChild(mobileOverlay);
+
+                    // Close menu when clicking overlay
+                    mobileOverlay.addEventListener('click', () => {
+                        hamburgerBtn.classList.remove('active');
+                        navUl.classList.remove('mobile-menu-active');
+                        mobileOverlay.style.opacity = '0';
+                        mobileOverlay.style.visibility = 'hidden';
+                    });
+                }
+
+                if (navUl.classList.contains('mobile-menu-active')) {
+                    mobileOverlay.style.opacity = '1';
+                    mobileOverlay.style.visibility = 'visible';
+                } else {
+                    mobileOverlay.style.opacity = '0';
+                    mobileOverlay.style.visibility = 'hidden';
+                }
+            });
+        }
+    }
+
+    // 2. Dropdown Menus Functionality
+    setupDropdownMenus() {
+        // Get all dropdown menu items
+        const dropdownLinks = document.querySelectorAll('nav a[href="#brands"], nav a[href="#clothing"], nav a[href="accessories.html"], nav a[href="#new-arrivals"]');
+
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const dropdown = link.closest('.dropdown');
+                if (dropdown) {
+                    const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+                    // Close all other dropdowns first
+                    document.querySelectorAll('.dropdown-content.show').forEach(content => {
+                        if (content !== dropdownContent) {
+                            content.classList.remove('show');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    if (dropdownContent) {
+                        dropdownContent.classList.toggle('show');
+                    }
+                }
+            });
+        });
+
+        // Close dropdowns when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content.show').forEach(content => {
+                    content.classList.remove('show');
+                });
+            }
+        });
+
+        // Close dropdowns on window resize (for mobile responsiveness)
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.dropdown-content.show').forEach(content => {
+                content.classList.remove('show');
+            });
+        });
+    }
+
+    // 3. Unique Side Menu Functionality
+    setupSideMenu() {
+        // Event listeners for existing side menu
+        const closeBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('sideMenuOverlay');
 
         if (closeBtn) {
             closeBtn.addEventListener('click', () => this.closeSideMenu());
@@ -97,7 +174,7 @@ class LuxuryInteractions {
         }
     }
 
-    // 2. Shopping Cart Management
+    // 4. Shopping Cart Management
     setupShoppingCart() {
         this.cart = [];
         this.updateCartCounter();
@@ -161,7 +238,7 @@ class LuxuryInteractions {
         }
     }
 
-    // 3. Product Interactions
+    // 5. Product Interactions
     setupProductInteractions() {
         // Quick view modal
         document.addEventListener('click', (e) => {
@@ -240,7 +317,7 @@ class LuxuryInteractions {
         }, 100);
     }
 
-    // 4. Newsletter Form Validation
+    // 6. Newsletter Form Validation
     setupNewsletterValidation() {
         const newsletterForm = document.querySelector('.newsletter form');
         if (newsletterForm) {
@@ -330,7 +407,7 @@ class LuxuryInteractions {
         }, 3000);
     }
 
-    // 5. Scroll Animations
+    // 7. Scroll Animations
     setupScrollAnimations() {
         // Intersection Observer for fade-in animations
         const observerOptions = {
@@ -681,4 +758,6 @@ window.addEventListener('error', (e) => {
 if (!window.IntersectionObserver) {
     console.warn('IntersectionObserver not supported. Scroll animations disabled.');
 }
+
+
 
