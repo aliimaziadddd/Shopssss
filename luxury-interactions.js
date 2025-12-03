@@ -132,9 +132,9 @@ class LuxuryInteractions {
     }
 
     openSideMenu() {
-        const overlay = document.querySelector('.side-menu-overlay');
-        const sideMenu = document.querySelector('.side-menu');
-        const menuItems = document.querySelectorAll('.menu-item');
+        const overlay = document.getElementById('sideMenuOverlay');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuItems = document.querySelectorAll('.luxury-menu-links a');
 
         if (overlay && sideMenu) {
             overlay.style.display = 'block';
@@ -148,7 +148,8 @@ class LuxuryInteractions {
                 // Stagger menu items
                 menuItems.forEach((item, index) => {
                     setTimeout(() => {
-                        item.classList.add('animate-in');
+                        item.style.transform = 'translateX(0)';
+                        item.style.opacity = '1';
                     }, index * 100);
                 });
             }, 10);
@@ -156,16 +157,19 @@ class LuxuryInteractions {
     }
 
     closeSideMenu() {
-        const overlay = document.querySelector('.side-menu-overlay');
-        const sideMenu = document.querySelector('.side-menu');
-        const menuItems = document.querySelectorAll('.menu-item');
+        const overlay = document.getElementById('sideMenuOverlay');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuItems = document.querySelectorAll('.luxury-menu-links a');
 
         if (overlay && sideMenu) {
             overlay.classList.remove('active');
             sideMenu.classList.remove('active');
 
             // Remove animations
-            menuItems.forEach(item => item.classList.remove('animate-in'));
+            menuItems.forEach(item => {
+                item.style.transform = 'translateX(30px)';
+                item.style.opacity = '0';
+            });
 
             setTimeout(() => {
                 overlay.style.display = 'none';
@@ -758,6 +762,8 @@ window.addEventListener('error', (e) => {
 if (!window.IntersectionObserver) {
     console.warn('IntersectionObserver not supported. Scroll animations disabled.');
 }
+
+
 
 
 
