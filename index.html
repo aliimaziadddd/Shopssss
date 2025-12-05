@@ -199,33 +199,21 @@
                         </div>
                     </div>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown mega-dropdown">
                     <a href="accessories.html" aria-haspopup="true" aria-expanded="false">ACCESSORIES</a>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li><a href="#watches">Watches</a></li>
-                            <li><a href="#jewelry">Jewelry</a></li>
-                            <li><a href="#bags">Bags</a></li>
-                            <li><a href="#belts">Belts</a></li>
-                            <li><a href="#scarves">Scarves</a></li>
-                            <li><a href="#sunglasses">Sunglasses</a></li>
-                            <li><a href="accessories.html" class="view-all">View All Accessories</a></li>
-                        </ul>
+                    <div class="dropdown-content mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="construction-message">
+                                <i class="ri-diamond-line luxury-icon"></i>
+                                <h3>Luxury Accessories Coming Soon</h3>
+                                <p>We are crafting an exquisite collection of handbags, fine jewelry, and luxury watches. Please check back soon for our premium selection.</p>
+                            </div>
+                        </div>
                     </div>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#new-arrivals" aria-haspopup="true" aria-expanded="false">NEW ARRIVALS</a>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li><a href="#this-week">This Week</a></li>
-                            <li><a href="#this-month">This Month</a></li>
-                            <li><a href="#luxury-drops">Luxury Drops</a></li>
-                            <li><a href="#limited-edition">Limited Edition</a></li>
-                            <li><a href="#coming-soon">Coming Soon</a></li>
-                            <li><a href="#new-arrivals" class="view-all">View All New Arrivals</a></li>
-                        </ul>
-                    </div>
+                <li>
+                    <a href="#new-arrivals">NEW ARRIVALS</a>
                 </li>
             </ul>
         </nav>
@@ -234,12 +222,24 @@
                 <input type="text" placeholder="Search luxury items..." aria-label="Search">
                 <i class="ri-search-line" aria-hidden="true"></i>
             </div>
-            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">
+            <button class="hamburger" id="hamburgerMenu" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
+            <div class="mobile-menu-content">
+                <a href="#brands">BRANDS</a>
+                <a href="#clothing">CLOTHING</a>
+                <a href="accessories.html">ACCESSORIES</a>
+                <a href="#new-arrivals">NEW ARRIVALS</a>
+            </div>
+        </div>
+
+
     </header>
 
     <main>
@@ -416,6 +416,7 @@
     <script src="luxury-interactions.js"></script>
 </body>
 </html>
+
 
 
 
