@@ -7,7 +7,6 @@ class LuxuryInteractions {
     }
 
     init() {
-        this.setupHamburgerMenu();
         this.setupSideMenu();
         this.setupDropdownMenus();
         this.setupShoppingCart();
@@ -18,62 +17,12 @@ class LuxuryInteractions {
         this.loadCartFromStorage();
     }
 
-    // 1. Hamburger Menu Functionality
-    setupHamburgerMenu() {
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const nav = document.querySelector('nav');
-        const navUl = document.querySelector('nav ul');
 
-        if (hamburgerBtn && nav && navUl) {
-            hamburgerBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                hamburgerBtn.classList.toggle('active');
-                navUl.classList.toggle('mobile-menu-active');
-
-                // Create or toggle mobile overlay
-                let mobileOverlay = document.querySelector('.mobile-menu-overlay');
-                if (!mobileOverlay) {
-                    mobileOverlay = document.createElement('div');
-                    mobileOverlay.className = 'mobile-menu-overlay';
-                    mobileOverlay.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(10, 14, 23, 0.8);
-                        backdrop-filter: blur(5px);
-                        z-index: 998;
-                        opacity: 0;
-                        visibility: hidden;
-                        transition: all 0.3s ease;
-                    `;
-                    document.body.appendChild(mobileOverlay);
-
-                    // Close menu when clicking overlay
-                    mobileOverlay.addEventListener('click', () => {
-                        hamburgerBtn.classList.remove('active');
-                        navUl.classList.remove('mobile-menu-active');
-                        mobileOverlay.style.opacity = '0';
-                        mobileOverlay.style.visibility = 'hidden';
-                    });
-                }
-
-                if (navUl.classList.contains('mobile-menu-active')) {
-                    mobileOverlay.style.opacity = '1';
-                    mobileOverlay.style.visibility = 'visible';
-                } else {
-                    mobileOverlay.style.opacity = '0';
-                    mobileOverlay.style.visibility = 'hidden';
-                }
-            });
-        }
-    }
 
     // 2. Dropdown Menus Functionality
     setupDropdownMenus() {
         // Get all dropdown menu items
-        const dropdownLinks = document.querySelectorAll('nav a[href="#brands"], nav a[href="#clothing"], nav a[href="accessories.html"], nav a[href="#new-arrivals"]');
+        const dropdownLinks = document.querySelectorAll('nav a[href="#brands"], nav a[href="#clothing"], nav a[href="accessories.html"]');
 
         dropdownLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -116,7 +65,69 @@ class LuxuryInteractions {
         });
     }
 
-    // 3. Unique Side Menu Functionality
+    // 3. Mobile Menu Functionality
+    setupMobileMenu() {
+        const hamburgerBtn = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenuDropdown');
+
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleMobileMenu();
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    this.closeMobileMenu();
+                }
+            });
+
+            // Close menu on window resize to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    this.closeMobileMenu();
+                }
+            });
+        }
+    }
+
+    toggleMobileMenu() {
+        const hamburgerBtn = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenuDropdown');
+
+        if (hamburgerBtn && mobileMenu) {
+            const isOpen = mobileMenu.classList.contains('show');
+
+            if (isOpen) {
+                this.closeMobileMenu();
+            } else {
+                this.openMobileMenu();
+            }
+        }
+    }
+
+    openMobileMenu() {
+        const hamburgerBtn = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenuDropdown');
+
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.classList.add('active');
+            mobileMenu.classList.add('show');
+        }
+    }
+
+    closeMobileMenu() {
+        const hamburgerBtn = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenuDropdown');
+
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('show');
+        }
+    }
+
+    // 4. Unique Side Menu Functionality
     setupSideMenu() {
         // Event listeners for existing side menu
         const closeBtn = document.getElementById('closeMenu');
@@ -762,6 +773,8 @@ window.addEventListener('error', (e) => {
 if (!window.IntersectionObserver) {
     console.warn('IntersectionObserver not supported. Scroll animations disabled.');
 }
+
+
 
 
 
