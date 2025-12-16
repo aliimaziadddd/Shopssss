@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menswear Collection - Authentic Only</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="luxury-colors.css">
+    <style>
+        /* Menswear Page Specific Styles */
+        body {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 50%, #2C3E50 100%);
+            color: #ECF0F1;
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(192, 192, 192, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .menswear-header {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+            padding: 2.5rem 3rem;
+            border-bottom: 2px solid #D4AF37;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menswear-header .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .menswear-header .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            color: #D4AF37;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        .menswear-header .tagline {
+            color: #ECF0F1;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .menswear-nav {
+            background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .menswear-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .menswear-nav a {
+            color: #ECF0F1;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .menswear-nav a:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .menswear-main {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menswear-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+
+        .menswear-hero h2 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #2E8B57 0%, #1B5E20 50%, #2E8B57 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(46, 139, 87, 0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menswear-hero p {
+            font-size: 1.4rem;
+            color: #D4AF37;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            font-weight: 500;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.3);
+        }
+
+        .inspirational-quote {
+            font-style: italic;
+            color: #2C3E50;
+            font-size: 1.6rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            border-left: 4px solid #00CED1;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .inspirational-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #00CED1;
+            position: absolute;
+            left: -1rem;
+            top: -0.5rem;
+            opacity: 0.3;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #7F8C8D;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .menswear-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .category-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .category-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.02) 0%, rgba(192, 192, 192, 0.01) 100%);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .category-section:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .category-icon {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #FFD700 0%, #C0C0C0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2C3E50;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .category-header h3 {
+            color: #2C3E50;
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(44, 62, 80, 0.1);
+            letter-spacing: 0.5px;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            justify-items: center;
+            align-items: start;
+        }
+
+
+
+        .menswear-product {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 248, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(139, 90, 140, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+
+        .menswear-product::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.05) 0%, rgba(255, 192, 203, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .menswear-product:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(139, 90, 140, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .menswear-product:hover::before {
+            opacity: 1;
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menswear-product:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-details {
+            padding: 2.5rem 2rem 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .product-name {
+            color: #2D1B69;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 0 1px 2px rgba(45, 27, 105, 0.1);
+        }
+
+        .product-price {
+            color: #D4AF37;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 1px 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #F0C674;
+            background: linear-gradient(135deg, #FFF8F8 0%, #FFF0F5 100%);
+            color: #8B5A8C;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(250, 213, 165, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .auth-button:hover {
+            background: linear-gradient(135deg, #FAD5A5 0%, #F0C674 100%);
+            color: #6B4C7A;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            border-color: #D4AF37;
+        }
+
+        .auth-button:hover::before {
+            left: 100%;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: #8B5A8C;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .back-link:hover {
+            color: #D4AF37;
+            transform: translateX(-5px);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .luxury-products {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .products-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .luxury-product {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+            position: relative;
+            width: 320px;
+            min-height: 450px;
+        }
+
+        .luxury-product::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(26, 26, 26, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .luxury-product:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+            border-color: #FFD700;
+        }
+
+        .luxury-product:hover::before {
+            opacity: 1;
+        }
+
+        .luxury-product .product-image {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 18px 18px 0 0;
+            border-bottom: 1px solid #D4AF37;
+        }
+
+        .luxury-product .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .luxury-product:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .luxury-product .product-details {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(145deg, #1a1a1a 0%, #2c2c2c 100%);
+        }
+
+        .luxury-product .product-name {
+            color: #D4AF37;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .luxury-product .product-price {
+            color: #FFD700;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .luxury-product .auth-button {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #D4AF37;
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+            color: #D4AF37;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-product .auth-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .luxury-product .auth-button:hover {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #1a1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            border-color: #FFD700;
+        }
+
+        .luxury-product .auth-button:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menswear-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .menswear-header h1 {
+                font-size: 2rem;
+            }
+
+            .menswear-nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .menswear-main {
+                padding: 2rem 1rem;
+            }
+
+            .menswear-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .products-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .luxury-product {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="menswear-header">
+        <h1>Authentic Only</h1>
+        <p>Menswear Collection</p>
+    </header>
+
+    <nav class="menswear-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#shirts">Shirts</a></li>
+            <li><a href="#t-shirts">T-Shirts</a></li>
+            <li><a href="#jeans">Jeans</a></li>
+            <li><a href="#outerwear">Outerwear</a></li>
+        </ul>
+    </nav>
+
+    <main class="menswear-main">
+        <a href="index.html" class="back-link">
+            <i class="ri-arrow-left-line"></i>
+            Back to Home
+        </a>
+
+        <section class="menswear-hero">
+            <h2>Luxury Menswear</h2>
+            <p>Discover our curated collection of authentic menswear, featuring premium fabrics, impeccable craftsmanship, and timeless elegance.</p>
+            <blockquote class="gentleman-quote">
+                "The difference between style and fashion is quality."
+                <cite>— Giorgio Armani</cite>
+            </blockquote>
+        </section>
+
+        <section class="luxury-products">
+            <div class="products-container">
+                <div class="luxury-product">
+                    <div class="product-image">
+                        <img src="TomFord1.jpg" alt="PRADA Sweatpants">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-name">PRADA Sweatpants</h4>
+                        <p class="product-price">$2,850</p>
+                        <button class="auth-button">VIEW AUTHENTICATION</button>
+                    </div>
+                </div>
+
+                <div class="luxury-product">
+                    <div class="product-image">
+                        <img src="HugoBoss1.jpg" alt="BOSS Sweatpants">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-name">BOSS Sweatpants</h4>
+                        <p class="product-price">$1,450</p>
+                        <button class="auth-button">VIEW AUTHENTICATION</button>
+                    </div>
+                </div>
+
+                <div class="luxury-product">
+                    <div class="product-image">
+                        <img src="LoroPiana.jpg" alt="LORO PIANA Sweatpants">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-name">LORO PIANA Sweatpants</h4>
+                        <p class="product-price">$3,200</p>
+                        <button class="auth-button">VIEW AUTHENTICATION</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="newsletter">
+            <h3>Subscribe to our Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="social-media">
+            <a href="#facebook"><i class="ri-facebook-fill"></i></a>
+            <a href="#instagram"><i class="ri-instagram-fill"></i></a>
+            <a href="#twitter"><i class="ri-twitter-fill"></i></a>
+        </div>
+        <div class="policies">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </footer>
+
+    <script src="luxury-interactions.js"></script>
+</body>
+</html>
+
+
+
+
+

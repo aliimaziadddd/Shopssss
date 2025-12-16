@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Brands - Authentic Only</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="luxury-colors.css">
+    <style>
+        /* Brands Page Specific Styles */
+        body {
+            background: linear-gradient(135deg, #0A0E17 0%, #1A1D24 50%, #0A0E17 100%);
+            color: #E5E4E2;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(26, 29, 36, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .brands-header {
+            background: linear-gradient(135deg, #1A1D24 0%, #0A0E17 100%);
+            padding: 2.5rem 3rem;
+            border-bottom: 2px solid #D4AF37;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .brands-header .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .brands-header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #D4AF37;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.15em;
+            line-height: 1.2;
+        }
+
+        .brands-nav {
+            background: linear-gradient(135deg, #0A0E17 0%, #1A1D24 100%);
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .brands-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .brands-nav a {
+            color: #E5E4E2;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .brands-nav a:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .brands-main {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .brands-hero {
+            margin-bottom: 4rem;
+        }
+
+        .brands-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #D4AF37;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.2em;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .brands-hero p {
+            font-size: 1.4rem;
+            color: #E5E4E2;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .brand-card {
+            background: rgba(26, 29, 36, 0.95);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(26, 26, 26, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(212, 175, 55, 0.3);
+            border-color: #FFD700;
+        }
+
+        .brand-card:hover::before {
+            opacity: 1;
+        }
+
+        .brand-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #D4AF37;
+        }
+
+        .brand-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #D4AF37;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand-description {
+            color: #E5E4E2;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .brand-link {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #0A0E17;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .brand-link:hover {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #0A0E17;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 2rem;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .brands-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .brands-header .logo {
+                font-size: 2rem;
+            }
+
+            .brands-nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .brands-main {
+                padding: 2rem 1rem;
+            }
+
+            .brands-hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.15em;
+            }
+
+            .brands-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .brand-card {
+                padding: 1.5rem;
+            }
+
+            .brand-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .brand-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="brands-header">
+        <div class="logo-section">
+            <h1 class="logo">Authentic Only</h1>
+        </div>
+    </header>
+
+    <nav class="brands-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#clothing">Clothing</a></li>
+            <li><a href="menswear.html">Menswear</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="#new-arrivals">New Arrivals</a></li>
+        </ul>
+    </nav>
+
+    <main class="brands-main">
+        <section class="brands-hero">
+            <h1>All Luxury Brands</h1>
+            <p>Explore our curated collection of the world's most prestigious luxury brands, each representing the pinnacle of craftsmanship and elegance.</p>
+        </section>
+
+        <section class="brands-grid">
+            <div class="brand-card">
+                <div class="brand-image">
+                    <img src="LoroPiana.jpg" alt="Loro Piana">
+                </div>
+                <h3 class="brand-name">Loro Piana</h3>
+                <p class="brand-description">Italian luxury at its finest. For over 150 years, Loro Piana has been the world's leading expert in cashmere and vicuna wool, sourcing the rarest fibers from the most prestigious farms to create unparalleled luxury textiles.</p>
+                <a href="#loro-piana" class="brand-link">Explore Collection</a>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-image">
+                    <img src="Brunelloo.jpg" alt="Brunello Cucinelli">
+                </div>
+                <h3 class="brand-name">Brunello Cucinelli</h3>
+                <p class="brand-description">A humanistic approach to luxury fashion. Founded by Brunello Cucinelli, this Italian brand embodies the philosophy of 'humanistic capitalism,' creating sustainable, ethically produced cashmere garments that celebrate the dignity of human work and craftsmanship.</p>
+                <a href="#brunello-cucinelli" class="brand-link">Explore Collection</a>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-image">
+                    <img src="TomFord1.jpg" alt="Tom Ford">
+                </div>
+                <h3 class="brand-name">Tom Ford</h3>
+                <p class="brand-description">Glamorous Streetwear. Bold, sophisticated designs that blend Hollywood glamour with contemporary fashion.</p>
+                <a href="#tom-ford" class="brand-link">Explore Collection</a>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-image">
+                    <img src="HugoBoss1.jpg" alt="BOSS">
+                </div>
+                <h3 class="brand-name">BOSS</h3>
+                <p class="brand-description">German precision and modern businesswear excellence. For over 100 years, BOSS has been synonymous with sophisticated business attire, combining German engineering precision with contemporary design to create timeless pieces for the modern professional.</p>
+                <a href="#boss" class="brand-link">Explore Collection</a>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-image">
+                    <img src="Tommy.jpg" alt="Tommy Hilfiger">
+                </div>
+                <h3 class="brand-name">Tommy Hilfiger</h3>
+                <p class="brand-description">All-American classic style. Tommy Hilfiger embodies the spirit of American optimism and classic preppy fashion, offering timeless pieces that blend traditional American sportswear with contemporary sophistication and the iconic red, white, and blue aesthetic.</p>
+                <a href="#tommy-hilfiger" class="brand-link">Explore Collection</a>
+            </div>
+        </section>
+
+        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    </main>
+
+    <script src="luxury-interactions.js"></script>
+</body>
+</html>
+
+
+
