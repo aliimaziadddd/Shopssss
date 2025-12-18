@@ -19,72 +19,68 @@
         </div>
 
         <div class="luxury-accordion">
-            <!-- Brands -->
             <div class="luxury-accordion-item">
-                <button class="luxury-accordion-header" type="button">
-                    BRANDS
+                <button class="luxury-accordion-header" data-target="client-services">
+                    <span>Client Services</span>
+                    <span class="luxury-accordion-arrow">▶</span>
                 </button>
-                <div class="luxury-accordion-content">
+                <div class="luxury-accordion-content" id="client-services">
                     <ul class="luxury-menu-links">
-                        <li><a href="#loro-piana">Loro Piana</a></li>
-                        <li><a href="#brunello-cucinelli">Brunello Cucinelli</a></li>
-                        <li><a href="#tom-ford">Tom Ford</a></li>
-                        <li><a href="#boss">BOSS</a></li>
-                        <li><a href="#tommy-hilfiger">Tommy Hilfiger</a></li>
-                        <li><a href="brands.html">View All Brands</a></li>
+                        <li><a href="#personal-shopping">Personal Shopping Consultation</a></li>
+                        <li><a href="#authentication">Authentication Services</a></li>
+                        <li><a href="#care-repair">Care & Repair</a></li>
+                        <li><a href="#gift-wrapping">Gift Wrapping</a></li>
                     </ul>
                 </div>
             </div>
-            <!-- Clothing -->
+
             <div class="luxury-accordion-item">
-                <button class="luxury-accordion-header" type="button">
-                    CLOTHING
+                <button class="luxury-accordion-header" data-target="about-us">
+                    <span>About Us</span>
+                    <span class="luxury-accordion-arrow">▶</span>
                 </button>
-                <div class="luxury-accordion-content">
-                    <div class="luxury-accordion">
-                        <!-- Menswear -->
-                        <div class="luxury-accordion-item">
-                            <button class="luxury-accordion-header" type="button">
-                                MENSWEAR
-                                <span class="luxury-accordion-arrow">+</span>
-                            </button>
-                            <div class="luxury-accordion-content">
-                                <ul class="luxury-menu-links">
-                                    <li><a href="#shirts">Shirts</a></li>
-                                    <li><a href="#t-shirts">T-Shirts</a></li>
-                                    <li><a href="#jeans">Jeans</a></li>
-                                    <li><a href="#outerwear">Outerwear</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Womenswear -->
-                        <div class="luxury-accordion-item">
-                            <button class="luxury-accordion-header" type="button">
-                                WOMENSWEAR
-                            </button>
-                            <div class="luxury-accordion-content">
-                                <ul class="luxury-menu-links">
-                                    <li><a href="#dresses">Dresses</a></li>
-                                    <li><a href="#skirts">Skirts</a></li>
-                                    <li><a href="#trousers">Trousers</a></li>
-                                    <li><a href="#knitwear">Knitwear</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- View All Clothing -->
-                        <div class="luxury-accordion-item">
-                            <a href="#view-all-clothing" class="luxury-accordion-header">View All Clothing</a>
-                        </div>
+                <div class="luxury-accordion-content" id="about-us">
+                    <ul class="luxury-menu-links">
+                        <li><a href="#story">Our Story & Heritage</a></li>
+                        <li><a href="#sustainability">Sustainability</a></li>
+                        <li><a href="#press">Press & Media</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="luxury-accordion-item">
+                <button class="luxury-accordion-header" data-target="support">
+                    <span>Support</span>
+                    <span class="luxury-accordion-arrow">▶</span>
+                </button>
+                <div class="luxury-accordion-content" id="support">
+                    <ul class="luxury-menu-links">
+                        <li><a href="#shipping">Shipping Information</a></li>
+                        <li><a href="#returns">Returns & Warranty</a></li>
+                        <li><a href="#size-guide">Size Guide</a></li>
+                        <li><a href="#contact">Contact Luxury Advisors</a></li>
+                    </ul>
+                    <div class="support-contacts">
+                        <p>📧 Email: support@authenticonly.com</p>
+                        <p>📞 Phone: +1 (888) AUTH-LUX</p>
+                        <p>📱 Instagram: @AuthenticOnly</p>
                     </div>
                 </div>
             </div>
-            <!-- Accessories -->
+
             <div class="luxury-accordion-item">
-                <a href="accessories.html" class="luxury-accordion-header">ACCESSORIES</a>
-            </div>
-            <!-- New Arrivals -->
-            <div class="luxury-accordion-item">
-                <a href="#new-arrivals" class="luxury-accordion-header">NEW ARRIVALS</a>
+                <button class="luxury-accordion-header" data-target="legal">
+                    <span>Legal</span>
+                    <span class="luxury-accordion-arrow">▶</span>
+                </button>
+                <div class="luxury-accordion-content" id="legal">
+                    <ul class="luxury-menu-links">
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#guarantee">Authentication Guarantee</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -227,11 +223,21 @@
                 <i class="ri-search-line" aria-hidden="true"></i>
             </div>
             <button class="hamburger" id="hamburgerMenu" aria-label="Open menu">
-                ☰
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
 
-
+        <!-- Mobile Menu Dropdown -->
+        <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
+            <div class="mobile-menu-content">
+                <a href="#brands">BRANDS</a>
+                <a href="#clothing">CLOTHING</a>
+                <a href="accessories.html">ACCESSORIES</a>
+                <a href="#new-arrivals">NEW ARRIVALS</a>
+            </div>
+        </div>
 
 
     </header>
@@ -410,8 +416,6 @@
     <script src="luxury-interactions.js"></script>
 </body>
 </html>
-
-
 
 
 
