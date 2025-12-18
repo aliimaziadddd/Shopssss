@@ -114,6 +114,33 @@ class LuxuryInteractions {
         if (overlay) {
             overlay.addEventListener('click', () => this.closeSideMenu());
         }
+
+        // Accordion functionality for mobile menu
+        this.setupAccordion();
+    }
+
+    setupAccordion() {
+        const accordionHeaders = document.querySelectorAll('.luxury-accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const item = header.closest('.luxury-accordion-item');
+                const isActive = item.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.luxury-accordion-item.active').forEach(activeItem => {
+                    activeItem.classList.remove('active');
+                });
+
+                // Toggle this item (only open if it wasn't active)
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
     }
 
     openSideMenu() {
